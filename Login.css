@@ -1,75 +1,98 @@
-*{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#111}
-    a{color:inherit;text-decoration:none}
+/* Regras específicas para a página de login — complementa bodysport.css */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #171798 0%, #0b0b0d 100%);
+}
 
-    /* Cores da marca (preto + roxo) */
-    :root{
-      --bg:#0f0f11;
-      --card:#0f1720;
-      --muted:#9aa3b2;
-      --accent:#00abab; /* roxo */
-      --accent-2:#0011ffc2;/*gradiente*/
-      --glass: rgba(255,255,255,0.04);/* Outro gradiente*/
-    }
+/* Mantém a largura do container, mas centra o conteúdo verticalmente */
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
 
-    body{background:linear-gradient(180deg,#171798 0%, #0b0b0d 100%);color:#e6eef8}
+/* Header leve (marca + nav) */
+.login-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
 
-    /* Container */
-    .container{max-width:1100px;margin:0 auto;padding:28px}
+/* O cartão fica com distribuição em duas colunas (form + visual) */
+.login-card {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+  align-items: start;
+  max-width: 920px;
+  width: 100%;
+}
 
-    /* Cabeçalho */
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
-    .marca{display:flex;gap:12px;align-items:center}
-    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:white}
-    nav ul{display:flex;gap:18px;list-style:none}
-    nav a{padding:8px 12px;border-radius:8px;font-weight:600;color:var(--muted)}
-    nav a.cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
+/* Ajustes internos da coluna esquerda (form) */
+.login-card .left {
+  padding: 4px 2px;
+}
+.login-card h2 {
+  margin-bottom:6px;
+  font-size:24px;
+}
 
+/* Wrapper da senha com botão dentro */
+.senha-wrapper {
+  position: relative;
+}
 
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:28px 0}
-    .hero h1{font-size:38px;line-height:1.02;margin-bottom:12px}
-    .hero p{color:var(--muted);margin-bottom:18px}
-    .botao{display:inline-block;padding:12px 18px;border-radius:10px;font-weight:700}
-    .botao-primario{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
-    .botao-outline{border:1px solid rgba(255,255,255,0.06);color:var(--muted);background:transparent}
+.senha-wrapper input[type="password"],
+.senha-wrapper input[type="text"] {
+  padding-right: 48px; /* espaço para o botão */
+}
 
-    .cartao{background:var(--card);border-radius:14px;padding:16px;box-shadow:0 6px 24px rgba(0,0,0,0.6);}
-    .especificacoes{display:flex;gap:12px;flex-wrap:wrap}
-    .especificacao{background:var(--glass);padding:10px;border-radius:10px;font-weight:600}
+.show-pass {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+}
 
-    /* Galeria */
-    .galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:20px}
-    .kit{border-radius:12px;overflow:hidden;background:#071022;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease}
-    .kit:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
-    .kit img{width:100%;height:160px;object-fit:cover;display:block}
-    .kit .meta{padding:12px}
-    .kit h3{font-size:16px;margin-bottom:6px}
-    .preco{color:var(--accent);font-weight:800}
+/* Aspecto do painel direito (visual) */
+.login-card .right {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:stretch;
+  justify-content:center;
+}
 
-    /* Filtros */
-    .filtros{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
-    .chip{padding:8px 10px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,0.04);font-weight:600;color:var(--muted);cursor:pointer}
-    .chip.active{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
+/* imagem de destaque dentro do cartão */
+.hero-visual {
+  height: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.12));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 
-    /* Sobre + Contato */
-    .duas-colunas{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
-    .formulario input,.formulario textarea{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;margin-bottom:10px}
-    .formulario textarea{min-height:120px;resize:vertical}
+/* Links e botões */
+.muted-link { color: var(--muted); font-weight:600; text-decoration:none; }
+.botao-outline { padding:10px 12px; font-weight:700; }
 
-    /* Rodapé */
-    footer{margin-top:36px;padding:16px 0;color:var(--muted);text-align:center}
-
- 
-    @media (max-width:880px){
-      .hero{grid-template-columns:1fr;}
-      .marca img{display:none}
-      .duas-colunas{grid-template-columns:1fr}
-    }
-
-
-    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,10,0.6);visibility:hidden;opacity:0;transition:opacity .18s ease, visibility .18s ease}
-    .modal.open{visibility:visible;opacity:1}
-    .modal-cartao{width:900px;max-width:96%;background:#071021;border-radius:12px;padding:18px}
-    .modal-grid{display:grid;grid-template-columns:1fr 360px;gap:16px}
-    .fechar{float:right;cursor:pointer}
+/* Responsivo — empilha e centraliza */
+@media (max-width: 880px) {
+  .login-card { grid-template-columns: 1fr; }
+  .hero-visual { height:160px; }
+}

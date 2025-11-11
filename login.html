@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entrar — BodySport</title>
+  <meta name="description" content="Login — BodySport" />
+  <!-- Seu CSS base (o que você enviou) -->
+  <link rel="stylesheet" href="bodysport.css" />
+  <!-- Regras específicas da página de login -->
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <main class="login-page">
+    <div class="login-wrapper container">
+
+      <!-- Marca / topo leve -->
+      <header class="login-header" aria-hidden="true">
+        <div class="marca">
+          <span class="logo">BS</span>
+          <div>
+            <h1>BodySport</h1>
+            <p class="subtitulo" style="color:var(--muted);font-weight:600">Painel de clientes</p>
+          </div>
+        </div>
+        <nav aria-label="links auxiliares">
+          <ul>
+            <li><a href="/" title="Voltar para o site">Início</a></li>
+            <li><a href="#contato">Suporte</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Cartão de login -->
+      <section class="cartao login-card" aria-labelledby="login-title" role="region">
+        <div class="left">
+          <h2 id="login-title">Entrar na sua conta</h2>
+          <p class="muted" style="color:var(--muted)">Use seu e-mail e senha para acessar o painel de pedidos e orçamentos.</p>
+
+          <form class="formulario" id="loginForm" novalidate>
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" placeholder="seu@exemplo.com" required>
+
+            <label for="senha">Senha</label>
+            <div class="senha-wrapper">
+              <input id="senha" name="senha" type="password" placeholder="••••••••" required>
+              <button type="button" class="show-pass" aria-label="Mostrar senha">👁️</button>
+            </div>
+
+            <div class="row-between" style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+              <label style="display:flex;align-items:center;gap:8px;font-weight:600;color:var(--muted)">
+                <input type="checkbox" name="remember" /> Lembrar
+              </label>
+              <a href="#" class="muted-link" style="color:var(--muted)">Esqueceu a senha?</a>
+            </div>
+
+            <button class="botao botao-primario" type="submit">Entrar</button>
+          </form>
+
+          <div class="divider" aria-hidden="true" style="margin:18px 0;display:flex;align-items:center;gap:12px">
+            <span style="height:1px;background:rgba(255,255,255,0.04);flex:1"></span>
+            <small style="color:var(--muted);font-weight:600">ou</small>
+            <span style="height:1px;background:rgba(255,255,255,0.04);flex:1"></span>
+          </div>
+
+          <div class="socials" style="display:flex;gap:10px">
+            <a href="#" class="botao botao-outline">Entrar com Google</a>
+            <a href="#" class="botao botao-outline">Entrar com Apple</a>
+          </div>
+
+          <p style="margin-top:14px;color:var(--muted)">
+            Não tem conta? <a href="/register" style="font-weight:700;color:var(--accent)">Criar conta</a>
+          </p>
+        </div>
+
+        <aside class="right" aria-hidden="true">
+          <div class="hero-visual">
+            <!-- espaço visual; pode conter imagem ou ilustração -->
+            <img src="hero-login.jpg" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:10px">
+          </div>
+          <div style="margin-top:12px;color:var(--muted);font-weight:600">
+            <p>Projetos 3D · Prototipagem · Instalação</p>
+            <p style="margin-top:6px;color:var(--muted)">Atendimento: seg-sex 9h–18h</p>
+          </div>
+        </aside>
+      </section>
+
+      <!-- Mensagem flutuante (usa sua classe .mensagem do CSS base) -->
+      <div id="msg" class="mensagem info" role="status" aria-live="polite">Preencha seus dados</div>
+    </div>
+  </main>
+
+  <footer style="text-align:center;padding:18px 0;color:var(--muted)">
+    <small>© 2025 BodySport — Todos os direitos reservados.</small>
+  </footer>
+
+  <script>
+    // Pequeno script para UX: mostrar/ocultar senha e demo de mensagem
+    (function () {
+      const showBtn = document.querySelector('.show-pass');
+      const pass = document.getElementById('senha');
+      const msg = document.getElementById('msg');
+      const form = document.getElementById('loginForm');
+
+      showBtn?.addEventListener('click', () => {
+        if (!pass) return;
+        pass.type = pass.type === 'password' ? 'text' : 'password';
+        showBtn.textContent = pass.type === 'password' ? '👁️' : '🙈';
+      });
+
+      form?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // validação simples (apenas demo). Aqui você chamaria sua API.
+        const email = form.email.value.trim();
+        const senha = form.senha.value.trim();
+        if (!email || !senha) {
+          msg.textContent = 'Preencha e-mail e senha.';
+          msg.classList.add('visivel');
+          setTimeout(()=> msg.classList.remove('visivel'), 3000);
+          return;
+        }
+        // simula sucesso
+        msg.textContent = 'Entrando…';
+        msg.classList.add('visivel');
+        setTimeout(()=> {
+          msg.textContent = 'Login efetuado!';
+          msg.classList.remove('info');
+          msg.classList.add('sucesso','visivel');
+        }, 700);
+      });
+    })();
+  </script>
+</body>
+</html>
