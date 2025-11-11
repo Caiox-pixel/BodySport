@@ -146,3 +146,25 @@ nav a.cta { background: linear-gradient(90deg, var(--accent), var(--accent-2)); 
   .hero { grid-template-columns: 1fr; }
   .duas-colunas { grid-template-columns: 1fr; }
 }
+/* Footer */
+footer {
+  background: var(--card);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px 0;
+  text-align: center;
+  margin-top: 48px;
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+footer p {
+  margin: 0;
+  opacity: 0.85;
+}
+
+footer p:hover {
+  opacity: 1;
+  color: var(--accent);
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
