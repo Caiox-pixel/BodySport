@@ -36,3 +36,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3000);
   }
 });
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const nome = form.nome.value.trim();
+  const email = form.email.value.trim();
+  const modelo = form.modelo.value.trim();
+
+  const resp = await fetch("https://seu-backend.onrender.com/api/orcamento", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ nome, email, modelo })
+  });
+
+  const data = await resp.json();
+  mostrarMensagem(data.mensagem || "Erro ao enviar!", resp.ok ? "sucesso" : "erro");
+});

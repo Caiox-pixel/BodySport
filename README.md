@@ -1,1 +1,2 @@
-# BodySport
+# BodySport 
+# O Objetivo deste site foi uma tentativa de desenvolvimento de um site para personalização de carros e fabricação de bodykits, entretanto foi uma tentativa falha que tentarei fazer funcionar com modelagem de espécie 3d
