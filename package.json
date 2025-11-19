@@ -1,0 +1,29 @@
+{
+  "name": "bodysport-frontend",
+  "version": "1.0.0",
+  "description": "Site para personalização de carros e fabricação de bodykits com visualização 3D",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "three": "^0.160.0",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "eslint": "^8.50.0"
+  },
+  "keywords": [
+    "bodykit",
+    "3d",
+    "customização",
+    "carros"
+  ],
+  "author": "",
+  "license": "ISC"
+}
+

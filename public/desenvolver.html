@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../src/css/main.css">
+  <link rel="stylesheet" href="../src/css/desenvolver.css">
+  <link rel="stylesheet" href="../src/css/icons.css">
+  <title>Desenvolver Bodykit — BodySport</title>
+  <meta name="description" content="Crie e personalize seu bodykit com nosso editor interativo" />
+</head>
+<body>
+  <main class="desenvolver-page">
+    <div class="desenvolver-container">
+      
+      <!-- Header -->
+      <header class="desenvolver-header">
+        <div class="marca">
+          <a href="index.html">
+            <span class="logo">BS</span>
+          </a>
+          <div>
+            <h1>Editor de Bodykits</h1>
+            <p class="subtitulo">Crie seu projeto personalizado</p>
+          </div>
+        </div>
+        <nav>
+          <button class="botao botao-outline" id="btnSalvar" data-emoji="save">Salvar Projeto</button>
+          <button class="botao botao-outline" id="btnExportar" data-emoji="export">Exportar</button>
+          <a href="index.html" class="botao botao-outline">← Voltar</a>
+        </nav>
+      </header>
+
+      <div class="editor-layout">
+        
+        <!-- Painel Esquerdo: Configurações -->
+        <aside class="painel-config">
+          <div class="painel-header">
+            <h2>Configurações</h2>
+            <button class="btn-toggle" id="togglePainel">▼</button>
+          </div>
+
+          <div class="painel-content" id="painelContent">
+            
+            <!-- Seleção de Carro -->
+            <section class="config-section">
+              <h3><span data-emoji="car"></span> Modelo do Carro</h3>
+              <div class="select-wrapper">
+                <select id="modeloCarro" class="select-custom">
+                  <option value="">Selecione um modelo</option>
+                  <!-- Carros serão carregados dinamicamente -->
+                </select>
+              </div>
+            </section>
+
+            <!-- Peças do Bodykit -->
+            <section class="config-section">
+              <h3><span data-emoji="tools"></span> Peças do Bodykit</h3>
+              
+              <div class="pecas-list">
+                <!-- Para-choque Dianteiro -->
+                <div class="peca-item">
+                  <div class="peca-header">
+                    <span class="peca-icon" data-emoji="bumper"></span>
+                    <span class="peca-nome">Para-choque Dianteiro</span>
+                    <label class="toggle-switch">
+                      <input type="checkbox" id="peca-para-choque-dianteiro" checked>
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                  <div class="peca-opcoes" id="opcoes-para-choque-dianteiro">
+                    <select class="select-peca">
+                      <option value="agressivo">Agressivo</option>
+                      <option value="sport">Sport</option>
+                      <option value="elegante">Elegante</option>
+                    </select>
+                    <div class="cor-picker">
+                      <label>Cor:</label>
+                      <input type="color" value="#1a1a22" class="input-color">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Para-choque Traseiro -->
+                <div class="peca-item">
+                  <div class="peca-header">
+                    <span class="peca-icon" data-emoji="bumper"></span>
+                    <span class="peca-nome">Para-choque Traseiro</span>
+                    <label class="toggle-switch">
+                      <input type="checkbox" id="peca-para-choque-traseiro" checked>
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                  <div class="peca-opcoes" id="opcoes-para-choque-traseiro">
+                    <select class="select-peca">
+                      <option value="agressivo">Agressivo</option>
+                      <option value="sport">Sport</option>
+                      <option value="elegante">Elegante</option>
+                    </select>
+                    <div class="cor-picker">
+                      <label>Cor:</label>
+                      <input type="color" value="#1a1a22" class="input-color">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Spoiler -->
+                <div class="peca-item">
+                  <div class="peca-header">
+                    <span class="peca-icon" data-emoji="spoiler"></span>
+                    <span class="peca-nome">Spoiler</span>
+                    <label class="toggle-switch">
+                      <input type="checkbox" id="peca-spoiler">
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                  <div class="peca-opcoes" id="opcoes-spoiler" style="display: none;">
+                    <select class="select-peca">
+                      <option value="alto">Alto</option>
+                      <option value="medio">Médio</option>
+                      <option value="baixo">Baixo</option>
+                    </select>
+                    <div class="cor-picker">
+                      <label>Cor:</label>
+                      <input type="color" value="#1a1a22" class="input-color">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Saias Laterais -->
+                <div class="peca-item">
+                  <div class="peca-header">
+                    <span class="peca-icon" data-emoji="skirts"></span>
+                    <span class="peca-nome">Saias Laterais</span>
+                    <label class="toggle-switch">
+                      <input type="checkbox" id="peca-saias-laterais">
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                  <div class="peca-opcoes" id="opcoes-saias-laterais" style="display: none;">
+                    <select class="select-peca">
+                      <option value="completa">Completa</option>
+                      <option value="parcial">Parcial</option>
+                    </select>
+                    <div class="cor-picker">
+                      <label>Cor:</label>
+                      <input type="color" value="#1a1a22" class="input-color">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Capô -->
+                <div class="peca-item">
+                  <div class="peca-header">
+                    <span class="peca-icon" data-emoji="hood"></span>
+                    <span class="peca-nome">Capô com Entrada de Ar</span>
+                    <label class="toggle-switch">
+                      <input type="checkbox" id="peca-capo">
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                  <div class="peca-opcoes" id="opcoes-capo" style="display: none;">
+                    <select class="select-peca">
+                      <option value="dupla">Entrada Dupla</option>
+                      <option value="simples">Entrada Simples</option>
+                    </select>
+                    <div class="cor-picker">
+                      <label>Cor:</label>
+                      <input type="color" value="#1a1a22" class="input-color">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Saia Dianteira -->
+                <div class="peca-item">
+                  <div class="peca-header">
+                    <span class="peca-icon" data-emoji="skirts"></span>
+                    <span class="peca-nome">Saia Dianteira</span>
+                    <label class="toggle-switch">
+                      <input type="checkbox" id="peca-saia-dianteira">
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                  <div class="peca-opcoes" id="opcoes-saia-dianteira" style="display: none;">
+                    <select class="select-peca">
+                      <option value="agressiva">Agressiva</option>
+                      <option value="sport">Sport</option>
+                    </select>
+                    <div class="cor-picker">
+                      <label>Cor:</label>
+                      <input type="color" value="#1a1a22" class="input-color">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Materiais -->
+            <section class="config-section">
+              <h3><span data-emoji="material"></span> Material Principal</h3>
+              <div class="materiais-grid">
+                <label class="material-option">
+                  <input type="radio" name="material" value="fibra-vidro" checked>
+                  <div class="material-card">
+                    <span class="material-icon material-fibra-vidro"></span>
+                    <span class="material-nome">Fibra de Vidro</span>
+                    <small>R$ 2.500 - R$ 4.000</small>
+                  </div>
+                </label>
+                <label class="material-option">
+                  <input type="radio" name="material" value="fibra-carbono">
+                  <div class="material-card">
+                    <span class="material-icon material-fibra-carbono"></span>
+                    <span class="material-nome">Fibra de Carbono</span>
+                    <small>R$ 5.000 - R$ 8.000</small>
+                  </div>
+                </label>
+                <label class="material-option">
+                  <input type="radio" name="material" value="abs">
+                  <div class="material-card">
+                    <span class="material-icon material-abs"></span>
+                    <span class="material-nome">ABS</span>
+                    <small>R$ 1.500 - R$ 3.000</small>
+                  </div>
+                </label>
+              </div>
+            </section>
+
+            <!-- Resumo e Preço -->
+            <section class="config-section resumo-section">
+              <h3>Resumo do Projeto</h3>
+              <div class="resumo-box">
+                <div class="resumo-item">
+                  <span>Peças selecionadas:</span>
+                  <strong id="contadorPecas">2</strong>
+                </div>
+                <div class="resumo-item">
+                  <span>Material:</span>
+                  <strong id="materialSelecionado">Fibra de Vidro</strong>
+                </div>
+                <div class="resumo-item total">
+                  <span>Estimativa:</span>
+                  <strong id="precoEstimado">R$ 3.000 - R$ 5.000</strong>
+                </div>
+              </div>
+              <button class="botao botao-primario btn-solicitar" id="btnSolicitarOrcamento" data-emoji="orcamento">
+                Solicitar Orçamento Detalhado
+              </button>
+            </section>
+
+          </div>
+        </aside>
+
+        <!-- Área Central: Preview -->
+        <main class="area-preview">
+          <div class="preview-header">
+            <h2>Preview do Projeto</h2>
+            <div class="preview-controls">
+              <button class="btn-control" id="btnRotate" title="Rotacionar" data-emoji="rotate"></button>
+              <button class="btn-control" id="btnZoomIn" title="Aproximar" data-emoji="zoom-in"></button>
+              <button class="btn-control" id="btnZoomOut" title="Afastar" data-emoji="zoom-out"></button>
+              <button class="btn-control" id="btnReset" title="Resetar" data-emoji="reset"></button>
+            </div>
+          </div>
+
+          <div class="preview-container" id="previewContainer">
+            <!-- Placeholder para visualização 3D futura -->
+            <div class="preview-placeholder">
+              <div class="car-silhouette">
+                <div class="car-part front-bumper" id="preview-para-choque-dianteiro"></div>
+                <div class="car-part hood" id="preview-capo"></div>
+                <div class="car-part side-skirt" id="preview-saias-laterais"></div>
+                <div class="car-part rear-bumper" id="preview-para-choque-traseiro"></div>
+                <div class="car-part front-skirt" id="preview-saia-dianteira"></div>
+                <div class="car-part spoiler" id="preview-spoiler"></div>
+              </div>
+              <p class="preview-message">
+                <span class="icon-3d" data-emoji="3d"></span>
+                Visualização interativa
+                <br>
+                <small>Em breve: visualização 3D completa com Three.js</small>
+              </p>
+            </div>
+          </div>
+
+          <!-- Informações do Projeto -->
+          <div class="projeto-info">
+            <div class="info-item">
+              <span class="info-label">Modelo:</span>
+              <span class="info-value" id="infoModelo">-</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Status:</span>
+              <span class="info-value status-rascunho">Rascunho</span>
+            </div>
+          </div>
+        </main>
+
+        <!-- Painel Direito: Histórico e Ajuda -->
+        <aside class="painel-lateral">
+          <div class="painel-tabs">
+            <button class="tab-btn active" data-tab="historico" data-emoji="history">Histórico</button>
+            <button class="tab-btn" data-tab="ajuda" data-emoji="help">Ajuda</button>
+          </div>
+
+          <div class="tab-content active" id="tab-historico">
+            <h3>Projetos Recentes</h3>
+            <div class="historico-list" id="historicoList">
+              <div class="historico-item vazio">
+                <p>Nenhum projeto salvo ainda</p>
+                <small>Seus projetos aparecerão aqui</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="tab-ajuda">
+            <h3>Como Usar</h3>
+            <div class="ajuda-content">
+              <div class="ajuda-item">
+                <strong>1. Selecione o modelo</strong>
+                <p>Escolha o modelo do seu carro na lista</p>
+              </div>
+              <div class="ajuda-item">
+                <strong>2. Configure as peças</strong>
+                <p>Ative as peças desejadas e personalize</p>
+              </div>
+              <div class="ajuda-item">
+                <strong>3. Escolha o material</strong>
+                <p>Selecione o material de fabricação</p>
+              </div>
+              <div class="ajuda-item">
+                <strong>4. Solicite orçamento</strong>
+                <p>Envie seu projeto para análise</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Modal de Solicitação de Orçamento -->
+  <div class="modal" id="modalOrcamento">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Solicitar Orçamento</h2>
+        <button class="btn-close" id="btnCloseModal">×</button>
+      </div>
+      <form id="formOrcamento" class="modal-form">
+        <label>Nome Completo</label>
+        <input type="text" name="nome" required placeholder="Seu nome">
+        
+        <label>Email</label>
+        <input type="email" name="email" required placeholder="seu@email.com">
+        
+        <label>Telefone</label>
+        <input type="tel" name="telefone" required placeholder="(00) 00000-0000">
+        
+        <label>Observações (opcional)</label>
+        <textarea name="observacoes" rows="3" placeholder="Alguma observação sobre o projeto..."></textarea>
+        
+        <div class="modal-actions">
+          <button type="button" class="botao botao-outline" id="btnCancelar">Cancelar</button>
+          <button type="submit" class="botao botao-primario">Enviar Solicitação</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../src/js/main.js"></script>
+  <script src="../src/js/carros.js"></script>
+  <script src="../src/js/icons.js"></script>
+  <script src="../src/js/desenvolver.js"></script>
+  <script>
+    // Inicializar após carregar tudo
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Carregar carros e popular select
+      const carros = await carregarCarros();
+      const selectCarro = document.getElementById('modeloCarro');
+      if (selectCarro && carros) {
+        popularSelectCarros(selectCarro, carros);
+      }
+      
+      // Substituir emojis por ícones
+      substituirEmojis();
+    });
+  </script>
+</body>
+</html>
+

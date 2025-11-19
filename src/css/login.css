@@ -1,10 +1,14 @@
-/* Regras específicas para a página de login — complementa bodysport.css */
+/* Regras específicas para a página de login — complementa main.css */
 .login-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #171798 0%, #0b0b0d 100%);
+  background: #0a0a0c;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(0, 171, 171, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(0, 17, 255, 0.06) 0px, transparent 50%);
+  background-attachment: fixed;
 }
 
 /* Mantém a largura do container, mas centra o conteúdo verticalmente */
@@ -96,3 +100,4 @@
   .login-card { grid-template-columns: 1fr; }
   .hero-visual { height:160px; }
 }
+

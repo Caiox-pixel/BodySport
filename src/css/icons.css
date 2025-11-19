@@ -1,0 +1,110 @@
+/* Ícones SVG profissionais para substituir emojis */
+
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  fill: currentColor;
+}
+
+.icon-large {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-small {
+  width: 16px;
+  height: 16px;
+}
+
+/* Ícone de carro */
+.icon-car {
+  width: 20px;
+  height: 20px;
+}
+
+/* Ícone de peças/ferramentas */
+.icon-parts {
+  width: 20px;
+  height: 20px;
+}
+
+/* Ícone de para-choque */
+.icon-bumper {
+  width: 18px;
+  height: 18px;
+}
+
+/* Ícone de spoiler */
+.icon-spoiler {
+  width: 18px;
+  height: 18px;
+}
+
+/* Ícone de saias laterais */
+.icon-skirt {
+  width: 18px;
+  height: 18px;
+}
+
+/* Ícone de capô */
+.icon-hood {
+  width: 18px;
+  height: 18px;
+}
+
+/* Ícone de material */
+.icon-material {
+  width: 20px;
+  height: 20px;
+}
+
+/* Ícone de salvar */
+.icon-save {
+  width: 16px;
+  height: 16px;
+}
+
+/* Ícone de exportar */
+.icon-export {
+  width: 16px;
+  height: 16px;
+}
+
+/* Ícone de histórico */
+.icon-history {
+  width: 18px;
+  height: 18px;
+}
+
+/* Ícone de ajuda */
+.icon-help {
+  width: 18px;
+  height: 18px;
+}
+
+/* Ícone de rotacionar */
+.icon-rotate {
+  width: 18px;
+  height: 18px;
+}
+
+/* Ícone de zoom */
+.icon-zoom {
+  width: 18px;
+  height: 18px;
+}
+
+/* Ícone de reset */
+.icon-reset {
+  width: 18px;
+  height: 18px;
+}
+
+/* Ícone de 3D */
+.icon-3d {
+  width: 32px;
+  height: 32px;
+}
+

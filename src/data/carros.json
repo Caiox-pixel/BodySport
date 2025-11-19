@@ -1,0 +1,101 @@
+{
+  "carros": [
+    {
+      "id": "civic-2022",
+      "marca": "Honda",
+      "modelo": "Civic",
+      "ano": "2022",
+      "categoria": "Sedan",
+      "imagem": "assets/images/cars/civic-2022.jpg"
+    },
+    {
+      "id": "golf-gti",
+      "marca": "Volkswagen",
+      "modelo": "Golf GTI",
+      "ano": "2023",
+      "categoria": "Hatchback",
+      "imagem": "assets/images/cars/golf-gti.jpg"
+    },
+    {
+      "id": "corolla",
+      "marca": "Toyota",
+      "modelo": "Corolla",
+      "ano": "2023",
+      "categoria": "Sedan",
+      "imagem": "assets/images/cars/corolla.jpg"
+    },
+    {
+      "id": "focus",
+      "marca": "Ford",
+      "modelo": "Focus",
+      "ano": "2022",
+      "categoria": "Hatchback",
+      "imagem": "assets/images/cars/focus.jpg"
+    },
+    {
+      "id": "cruze",
+      "marca": "Chevrolet",
+      "modelo": "Cruze",
+      "ano": "2023",
+      "categoria": "Sedan",
+      "imagem": "assets/images/cars/cruze.jpg"
+    },
+    {
+      "id": "jetta",
+      "marca": "Volkswagen",
+      "modelo": "Jetta",
+      "ano": "2023",
+      "categoria": "Sedan",
+      "imagem": "assets/images/cars/jetta.jpg"
+    },
+    {
+      "id": "civic-si",
+      "marca": "Honda",
+      "modelo": "Civic Si",
+      "ano": "2023",
+      "categoria": "Sedan",
+      "imagem": "assets/images/cars/civic-si.jpg"
+    },
+    {
+      "id": "polo",
+      "marca": "Volkswagen",
+      "modelo": "Polo",
+      "ano": "2023",
+      "categoria": "Hatchback",
+      "imagem": "assets/images/cars/polo.jpg"
+    },
+    {
+      "id": "onix",
+      "marca": "Chevrolet",
+      "modelo": "Onix",
+      "ano": "2023",
+      "categoria": "Hatchback",
+      "imagem": "assets/images/cars/onix.jpg"
+    },
+    {
+      "id": "hb20",
+      "marca": "Hyundai",
+      "modelo": "HB20",
+      "ano": "2023",
+      "categoria": "Hatchback",
+      "imagem": "assets/images/cars/hb20.jpg"
+    },
+    {
+      "id": "corolla-cross",
+      "marca": "Toyota",
+      "modelo": "Corolla Cross",
+      "ano": "2023",
+      "categoria": "SUV",
+      "imagem": "assets/images/cars/corolla-cross.jpg"
+    },
+    {
+      "id": "t-cross",
+      "marca": "Volkswagen",
+      "modelo": "T-Cross",
+      "ano": "2023",
+      "categoria": "SUV",
+      "imagem": "assets/images/cars/t-cross.jpg"
+    }
+  ]
+}
+
