@@ -1,5 +1,10 @@
 // Configuração da API
-const API_URL = window.API_URL || 'http://localhost:5000';
+// Em produção, use a URL do backend no Render
+// Você pode definir window.API_URL no HTML antes de carregar este script
+const API_URL = window.API_URL || 
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:5000' 
+    : 'https://bodysport-backend.onrender.com'); // ⚠️ ATUALIZE COM SUA URL DO RENDER
 
 // Função utilitária para exibir mensagens
 function mostrarMensagem(texto, tipo) {

@@ -390,7 +390,11 @@ async function enviarOrcamento(e) {
   button.textContent = 'Enviando...';
 
   try {
-    const API_URL = window.API_URL || 'http://localhost:5000';
+    // Usar a mesma lógica de API_URL do main.js
+    const API_URL = window.API_URL || 
+      (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:5000' 
+        : 'https://bodysport-backend.onrender.com'); // ⚠️ ATUALIZE COM SUA URL DO RENDER
     const resp = await fetch(`${API_URL}/api/orcamento`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
