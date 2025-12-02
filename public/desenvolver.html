@@ -264,23 +264,7 @@
           </div>
 
           <div class="preview-container" id="previewContainer">
-            <!-- Placeholder para visualização 3D futura -->
-            <div class="preview-placeholder">
-              <div class="car-silhouette">
-                <div class="car-part front-bumper" id="preview-para-choque-dianteiro"></div>
-                <div class="car-part hood" id="preview-capo"></div>
-                <div class="car-part side-skirt" id="preview-saias-laterais"></div>
-                <div class="car-part rear-bumper" id="preview-para-choque-traseiro"></div>
-                <div class="car-part front-skirt" id="preview-saia-dianteira"></div>
-                <div class="car-part spoiler" id="preview-spoiler"></div>
-              </div>
-              <p class="preview-message">
-                <span class="icon-3d" data-emoji="3d"></span>
-                Visualização interativa
-                <br>
-                <small>Em breve: visualização 3D completa com Three.js</small>
-              </p>
-            </div>
+            <!-- Visualização 3D será renderizada aqui -->
           </div>
 
           <!-- Informações do Projeto -->
@@ -373,7 +357,11 @@
   <script src="../src/js/carros.js"></script>
   <script src="../src/js/icons.js"></script>
   <script src="../src/js/desenvolver.js"></script>
-  <script>
+  
+  <!-- Three.js via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js"></script>
+  
+  <script type="module">
     // Inicializar após carregar tudo
     document.addEventListener('DOMContentLoaded', async () => {
       // Carregar carros e popular select
@@ -385,6 +373,31 @@
       
       // Substituir emojis por ícones
       substituirEmojis();
+      
+      // Aguardar Three.js carregar
+      await new Promise(resolve => {
+        if (typeof THREE !== 'undefined') {
+          resolve();
+        } else {
+          const checkInterval = setInterval(() => {
+            if (typeof THREE !== 'undefined') {
+              clearInterval(checkInterval);
+              resolve();
+            }
+          }, 100);
+        }
+      });
+      
+      // Inicializar visualização 3D
+      const { initViewer3D } = await import('../src/js/viewer3d.js');
+      initViewer3D('previewContainer');
+      
+      // Atualizar preview inicial
+      setTimeout(() => {
+        if (typeof atualizarPreview === 'function') {
+          atualizarPreview();
+        }
+      }, 500);
     });
   </script>
 </body>

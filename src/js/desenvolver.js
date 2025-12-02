@@ -38,7 +38,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   await carregarCarros();
   
   inicializarEventos();
-  atualizarPreview();
+  
+  // Aguardar um pouco para o viewer 3D inicializar
+  setTimeout(() => {
+    atualizarPreview();
+  }, 1000);
+  
   atualizarResumo();
   carregarHistorico();
 });
@@ -47,20 +52,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 function inicializarEventos() {
   // Seleção de modelo
   const modeloSelect = document.getElementById('modeloCarro');
-  modeloSelect.addEventListener('change', (e) => {
+  modeloSelect.addEventListener('change', async (e) => {
     projeto.modeloCarro = e.target.value;
     atualizarInfoModelo();
-    atualizarPreview();
+    await atualizarPreview();
   });
 
   // Toggle de peças
   Object.keys(projeto.pecas).forEach(pecaId => {
     const checkbox = document.getElementById(`peca-${pecaId}`);
     if (checkbox) {
-      checkbox.addEventListener('change', (e) => {
+      checkbox.addEventListener('change', async (e) => {
         projeto.pecas[pecaId].ativo = e.target.checked;
         toggleOpcoesPeca(pecaId, e.target.checked);
-        atualizarPreview();
+        await atualizarPreview();
         atualizarResumo();
       });
     }
@@ -68,18 +73,18 @@ function inicializarEventos() {
     // Seleção de tipo de peça
     const select = document.querySelector(`#opcoes-${pecaId} .select-peca`);
     if (select) {
-      select.addEventListener('change', (e) => {
+      select.addEventListener('change', async (e) => {
         projeto.pecas[pecaId].tipo = e.target.value;
-        atualizarPreview();
+        await atualizarPreview();
       });
     }
 
     // Seleção de cor
     const colorInput = document.querySelector(`#opcoes-${pecaId} .input-color`);
     if (colorInput) {
-      colorInput.addEventListener('change', (e) => {
+      colorInput.addEventListener('change', async (e) => {
         projeto.pecas[pecaId].cor = e.target.value;
-        atualizarPreview();
+        await atualizarPreview();
       });
     }
   });
@@ -92,22 +97,8 @@ function inicializarEventos() {
     });
   });
 
-  // Botões de controle do preview
-  document.getElementById('btnRotate')?.addEventListener('click', () => {
-    console.log('Rotação (futuro: Three.js)');
-  });
-
-  document.getElementById('btnZoomIn')?.addEventListener('click', () => {
-    console.log('Zoom in (futuro: Three.js)');
-  });
-
-  document.getElementById('btnZoomOut')?.addEventListener('click', () => {
-    console.log('Zoom out (futuro: Three.js)');
-  });
-
-  document.getElementById('btnReset')?.addEventListener('click', () => {
-    resetarPreview();
-  });
+  // Botões de controle do preview (já configurados no viewer3d.js)
+  // Os controles são gerenciados diretamente no viewer3d.js
 
   // Tabs do painel lateral
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -148,20 +139,35 @@ function toggleOpcoesPeca(pecaId, ativo) {
   }
 }
 
+// Atualizar preview visual (3D)
+let viewer3DModule = null;
+
+// Carregar módulo 3D
+async function loadViewer3D() {
+  if (!viewer3DModule) {
+    try {
+      viewer3DModule = await import('./viewer3d.js');
+    } catch (error) {
+      console.warn('Erro ao carregar viewer 3D:', error);
+    }
+  }
+  return viewer3DModule;
+}
+
 // Atualizar preview visual
-function atualizarPreview() {
+async function atualizarPreview() {
+  const viewer = await loadViewer3D();
+  if (!viewer) return;
+
   Object.keys(projeto.pecas).forEach(pecaId => {
-    const previewElement = document.getElementById(`preview-${pecaId}`);
-    if (previewElement) {
-      if (projeto.pecas[pecaId].ativo) {
-        previewElement.classList.add('active');
-        previewElement.style.borderColor = projeto.pecas[pecaId].cor;
-        previewElement.style.backgroundColor = projeto.pecas[pecaId].cor + '40';
-      } else {
-        previewElement.classList.remove('active');
-        previewElement.style.borderColor = 'transparent';
-        previewElement.style.backgroundColor = 'transparent';
-      }
+    const peca = projeto.pecas[pecaId];
+    if (viewer.updateBodykitPart) {
+      viewer.updateBodykitPart(
+        pecaId,
+        peca.ativo,
+        peca.tipo,
+        peca.cor
+      );
     }
   });
 }
@@ -218,10 +224,9 @@ function atualizarResumo() {
   }
 }
 
-// Resetar preview
+// Resetar preview (já implementado no viewer3d.js via botão)
 function resetarPreview() {
-  // Resetar zoom e rotação (futuro: Three.js)
-  console.log('Preview resetado');
+  // Reset é gerenciado pelo viewer3d.js
 }
 
 // Trocar tab
@@ -313,15 +318,15 @@ function carregarHistorico() {
 
   // Adicionar eventos de clique
   historicoList.querySelectorAll('.historico-item:not(.vazio)').forEach(item => {
-    item.addEventListener('click', () => {
+    item.addEventListener('click', async () => {
       const index = parseInt(item.dataset.index);
-      carregarProjeto(projetos[index]);
+      await carregarProjeto(projetos[index]);
     });
   });
 }
 
 // Carregar projeto
-function carregarProjeto(proj) {
+async function carregarProjeto(proj) {
   projeto.modeloCarro = proj.modeloCarro || '';
   projeto.pecas = proj.pecas || projeto.pecas;
   projeto.material = proj.material || 'fibra-vidro';
@@ -348,7 +353,7 @@ function carregarProjeto(proj) {
     }
   });
 
-  atualizarPreview();
+  await atualizarPreview();
   atualizarResumo();
   atualizarInfoModelo();
   mostrarMensagem('Projeto carregado!', 'sucesso');
