@@ -26,6 +26,8 @@
   "author": "",
   "license": "ISC"
 }
+
+
 {
   "builds": [
     { "src": "package.json", "use": "@vercel/static-build" }
@@ -34,5 +36,8 @@
     { "src": "/(.*)", "dest": "/index.html" }
   ],
   "outputDirectory": "dist"
+} 
+"engines": {
+  "node": ">=18"
 }
 
