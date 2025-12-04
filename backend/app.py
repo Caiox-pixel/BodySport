@@ -175,7 +175,8 @@ if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
     debug = os.getenv("FLASK_DEBUG", "False").lower() == "true"
     app.run(host="0.0.0.0", port=port, debug=debug)
-    @app.route("/api/health", methods=["GET"])
+# 🟢 ROTA DE SAÚDE
+@app.route("/api/health", methods=["GET"])
 def health():
     """Endpoint para verificar saúde da API"""
     return jsonify({
@@ -183,7 +184,7 @@ def health():
         "message": "API está funcionando"
     })
 
-# 🟢 NOVA ROTA RAIZ
+# 🟢 ROTA RAIZ (Página inicial)
 @app.route("/", methods=["GET"])
 def home():
     return jsonify({
@@ -192,8 +193,8 @@ def home():
         "endpoints": ["/api/orcamento", "/api/login", "/api/health"]
     })
 
+# 🔧 EXECUÇÃO LOCAL
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
     debug = os.getenv("FLASK_DEBUG", "False").lower() == "true"
     app.run(host="0.0.0.0", port=port, debug=debug)
-
