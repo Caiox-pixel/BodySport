@@ -175,3 +175,25 @@ if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
     debug = os.getenv("FLASK_DEBUG", "False").lower() == "true"
     app.run(host="0.0.0.0", port=port, debug=debug)
+    @app.route("/api/health", methods=["GET"])
+def health():
+    """Endpoint para verificar saúde da API"""
+    return jsonify({
+        "status": "ok",
+        "message": "API está funcionando"
+    })
+
+# 🟢 NOVA ROTA RAIZ
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({
+        "status": "online",
+        "message": "🚀 BodySport API está rodando com sucesso!",
+        "endpoints": ["/api/orcamento", "/api/login", "/api/health"]
+    })
+
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 5000))
+    debug = os.getenv("FLASK_DEBUG", "False").lower() == "true"
+    app.run(host="0.0.0.0", port=port, debug=debug)
+
