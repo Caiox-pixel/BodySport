@@ -1,4 +1,7 @@
-from flask import Flask, request, jsonify, certifi, pydotenv
+from flask import Flask, request, jsonify
+import certifi
+from dotenv import load_dotenv
+import os
 from flask_cors import CORS
 import psycopg2
 from psycopg2 import pool
