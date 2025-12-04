@@ -52,9 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
         mostrarMensagem("Login efetuado com sucesso!", "sucesso");
 
         // Redireciona para a página inicial após 1,5s
-        setTimeout(() => {
-          window.location.href = "{{ url_for('home') }}";
-        }, 1500);
+       
+          window.location.href = "/";
+   
       } else {
         // Caso a API retorne erro
         const erro = data.erro || "Usuário ou senha incorretos.";
