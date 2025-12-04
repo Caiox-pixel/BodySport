@@ -1,17 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro — BodySport</title>
-  <meta name="description" content="Crie sua conta para acessar o painel da BodySport." />
+  <meta name="description" content="Crie sua conta na BodySport para acessar o painel de clientes.">
+  
+  <!-- Estilos principais -->
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/cadastro.css') }}">
 </head>
 
 <body>
   <main class="pagina-cadastro">
-    <!-- Cabeçalho do topo -->
+
     <header class="cabecalho-cadastro">
       <section class="marca">
         <span class="logo">BS</span>
@@ -29,30 +31,21 @@
       </nav>
     </header>
 
-    <!-- Conteúdo principal -->
-    <section class="cartao formulario" aria-labelledby="titulo-cadastro">
-      <header>
-        <h2 id="titulo-cadastro">Criar nova conta</h2>
-        <p class="descricao">Preencha os campos abaixo para se cadastrar na plataforma BodySport.</p>
-      </header>
+    <section class="formulario" aria-labelledby="titulo-cadastro">
+      <h2 id="titulo-cadastro">Criar nova conta</h2>
+      <p class="descricao">Preencha os campos abaixo para se cadastrar na plataforma BodySport.</p>
 
-      <!-- Formulário de cadastro -->
-      <form id="formularioCadastro" novalidate>
+      <form id="formCadastro" novalidate>
         <label for="nome">Nome completo</label>
-        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
 
         <label for="email">E-mail</label>
         <input type="email" id="email" name="email" placeholder="seu@email.com" required>
 
         <label for="senha">Senha</label>
         <section class="campo-senha">
-          <input type="password" id="senha" name="senha" placeholder="Crie uma senha" required>
-          <button type="button" id="mostrarSenha" aria-label="Mostrar ou ocultar senha">Mostrar</button>
-        </section>
-
-        <label for="confirmar">Confirmar senha</label>
-        <section class="campo-senha">
-          <input type="password" id="confirmar" name="confirmar" placeholder="Repita sua senha" required>
+          <input type="password" id="senha" name="senha" placeholder="Crie uma senha segura" required>
+          <button type="button" id="mostrarSenha" aria-label="Mostrar senha">Mostrar</button>
         </section>
 
         <button type="submit" class="botao botao-primario">Cadastrar</button>
@@ -65,14 +58,14 @@
       </footer>
     </section>
 
-    <!-- Mensagem flutuante de feedback -->
-    <section id="mensagem" class="mensagem info" role="status" aria-live="polite"></section>
+    <section id="msg" class="mensagem info" role="status" aria-live="polite"></section>
   </main>
 
   <footer class="rodape-site">
     <p>© 2025 BodySport — Todos os direitos reservados.</p>
   </footer>
 
+  <!-- Script externo -->
   <script src="{{ url_for('static', filename='js/cadastro.js') }}"></script>
 </body>
 </html>

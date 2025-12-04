@@ -168,3 +168,29 @@
 .mensagem.erro {
   background: linear-gradient(135deg, #ff3d3d, #cc2e2e);
 }
+/* Campo de senha com botão lateral */
+.campo-senha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.campo-senha input {
+  flex: 1;
+}
+
+.campo-senha button {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  background: var(--glass);
+  color: var(--muted-light);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.campo-senha button:hover {
+  background: var(--accent);
+  color: #fff;
+}
