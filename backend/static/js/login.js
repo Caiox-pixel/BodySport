@@ -1,69 +1,70 @@
 
+// Script da página de login — controla envio do formulário, feedback e redirecionamento
 
-// Espera o carregamento total da página
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("loginForm");
   const msg = document.getElementById("msg");
   const showBtn = document.querySelector(".show-pass");
   const pass = document.getElementById("senha");
 
-  // Função auxiliar para mostrar mensagens na tela
+  // Função para mostrar mensagens na tela
   function mostrarMensagem(texto, tipo = "info") {
     msg.textContent = texto;
     msg.className = "mensagem " + tipo + " visivel";
     setTimeout(() => msg.classList.remove("visivel"), 4000);
   }
 
-  // Mostrar ou ocultar senha
+  // Mostrar/ocultar senha
   showBtn?.addEventListener("click", () => {
     if (!pass) return;
     pass.type = pass.type === "password" ? "text" : "password";
   });
 
-  // Captura o envio do formulário
+  // Escuta o envio do formulário
   form?.addEventListener("submit", async (e) => {
-    e.preventDefault(); // Evita recarregar a página
+    e.preventDefault();
 
-    // Coleta os dados do formulário
     const email = form.email.value.trim();
     const senha = form.senha.value.trim();
 
-    // Validação básica antes do envio
     if (!email || !senha) {
       mostrarMensagem("Preencha e-mail e senha.", "erro");
       return;
     }
 
     try {
-      // Envia requisição para a API de login
+      console.log("🔹 Enviando dados de login:", { email, senha });
+
       const resposta = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, senha })
       });
 
-      // Tenta ler o JSON retornado
       const data = await resposta.json();
+      console.log("🔹 Resposta do servidor:", data);
 
       if (resposta.ok && data.status === "ok") {
-        // Se o login deu certo, salva o user_id no localStorage
+        // Login bem-sucedido
         localStorage.setItem("user_id", data.user_id);
-
         mostrarMensagem("Login efetuado com sucesso!", "sucesso");
 
-        // Redireciona para a página inicial após 1,5s
-       
+        // Aguarda 1,5 segundo e redireciona
+        setTimeout(() => {
+          console.log("🔸 Redirecionando para / ...");
           window.location.href = "/";
-   
+        }, 1500);
+
       } else {
-        // Caso a API retorne erro
+        // Erro retornado pela API
         const erro = data.erro || "Usuário ou senha incorretos.";
         mostrarMensagem(erro, "erro");
       }
+
     } catch (erro) {
-      // Caso a requisição falhe (sem internet, servidor offline, etc.)
-      console.error("Erro na requisição:", erro);
+      console.error("❌ Erro na requisição:", erro);
       mostrarMensagem("Erro ao conectar ao servidor.", "erro");
     }
   });
 });
+
