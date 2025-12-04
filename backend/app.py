@@ -191,5 +191,65 @@ if __name__ == "__main__":
 def login_page():
     """Renderiza a página de login"""
     return render_template("login.html")
+# Página de cadastro (interface visual)
+@app.route("/cadastro", methods=["GET"])
+def pagina_cadastro():
+    """Exibe a página de criação de conta."""
+    return render_template("cadastro.html")
+# Import necessário no topo do app.py
+from flask import request, jsonify
+import bcrypt
+import psycopg2
+
+# Rota da API para criar um novo usuário
+@app.route("/api/cadastro", methods=["POST"])
+def registrar_usuario():
+    """Registra um novo usuário no banco de dados."""
+    try:
+        dados = request.get_json()  # Recebe JSON do front-end
+        nome = dados.get("nome")
+        email = dados.get("email")
+        senha = dados.get("senha")
+
+        # Verifica se todos os campos foram enviados
+        if not nome or not email or not senha:
+            return jsonify({"status": "erro", "erro": "Campos obrigatórios faltando."}), 400
+
+        # Criptografa a senha com bcrypt
+        senha_hash = bcrypt.hashpw(senha.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
+
+        # Conecta ao banco de dados
+        conn = psycopg2.connect(
+            host=os.getenv("DB_HOST"),
+            dbname=os.getenv("DB_NAME"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            port=os.getenv("DB_PORT", 5432)
+        )
+        cur = conn.cursor()
+
+        # Verifica se o e-mail já existe
+        cur.execute("SELECT id FROM usuarios WHERE email = %s", (email,))
+        if cur.fetchone():
+            cur.close()
+            conn.close()
+            return jsonify({"status": "erro", "erro": "E-mail já cadastrado."}), 409
+
+        # Insere o novo usuário
+        cur.execute(
+            "INSERT INTO usuarios (nome, email, senha_hash) VALUES (%s, %s, %s)",
+            (nome, email, senha_hash)
+        )
+        conn.commit()
+
+        cur.close()
+        conn.close()
+
+        # Retorna resposta de sucesso
+        return jsonify({"status": "ok", "mensagem": "Usuário criado com sucesso!"}), 201
+
+    except Exception as erro:
+        print("Erro ao cadastrar usuário:", erro)
+        return jsonify({"status": "erro", "erro": "Erro interno do servidor."}), 500
 
 

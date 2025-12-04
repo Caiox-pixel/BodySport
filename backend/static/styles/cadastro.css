@@ -1,0 +1,170 @@
+/* ==============================
+   ESTILO — Página de Cadastro
+   ============================== */
+
+/* Estrutura geral */
+.pagina-cadastro {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Cabeçalho */
+.cabecalho-cadastro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+
+.cabecalho-cadastro .marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cabecalho-cadastro nav ul {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+}
+
+.cabecalho-cadastro nav a {
+  color: var(--muted);
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
+.cabecalho-cadastro nav a:hover {
+  color: #fff;
+  background: var(--glass);
+}
+
+/* Formulário */
+.formulario {
+  background: var(--card);
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px var(--shadow);
+}
+
+.formulario h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.formulario .descricao {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+.formulario label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted-light);
+  font-weight: 500;
+}
+
+.formulario input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+}
+
+.formulario input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 212, 212, 0.1);
+}
+
+/* Campo de senha com botão mostrar */
+.campo-senha {
+  display: flex;
+  align-items: center;
+}
+
+.campo-senha input {
+  flex: 1;
+}
+
+.campo-senha button {
+  margin-left: 8px;
+  background: var(--glass);
+  color: var(--muted-light);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.campo-senha button:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Rodapé do formulário */
+.rodape-formulario {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.rodape-formulario .link {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.rodape-site {
+  text-align: center;
+  padding: 18px;
+  color: var(--muted);
+  margin-top: 32px;
+}
+
+/* Mensagem flutuante */
+.mensagem {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 14px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  z-index: 1000;
+  color: #fff;
+}
+
+.mensagem.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mensagem.info {
+  background: linear-gradient(135deg, var(--accent-2), #0044cc);
+}
+
+.mensagem.sucesso {
+  background: linear-gradient(135deg, var(--accent), #009999);
+}
+
+.mensagem.erro {
+  background: linear-gradient(135deg, #ff3d3d, #cc2e2e);
+}
