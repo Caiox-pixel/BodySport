@@ -1,15 +1,18 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="{{url_for('static', filename='styles/main.css')}}">
   <title>BodySport — Bodykits & Customização</title>
-  <meta name="description" content="Desenvolvimento e instalação de bodykits personalizados para carros: qualidade, design e performance." />
+  <meta name="description"
+    content="Desenvolvimento e instalação de bodykits personalizados para carros: qualidade, design e performance." />
 </head>
+
 <body>
   <main class="container">
-    
+
     <header>
       <section class="marca">
         <span class="logo">BS</span>
@@ -31,9 +34,10 @@
     <section class="hero">
       <article>
         <h2>Transforme seu carro com bodykits exclusivos</h2>
-        <p>Projetos sob medida, impressão 3D, fibra de vidro e fibra de carbono. Visual, aerodinâmica e encaixe perfeito — feito por profissionais.</p>
+        <p>Projetos sob medida, impressão 3D, fibra de vidro e fibra de carbono. Visual, aerodinâmica e encaixe perfeito
+          — feito por profissionais.</p>
         <div class="botoes">
-          <a class="botao botao-primario" href="{{url_for('templates', filename='desenvolver.html')}}">Criar Bodykit</a>
+          <a class="botao botao-primario" href="{{ url_for('desenvolver') }}">Criar Bodykit</a>
           <a class="botao botao-outline" href="#kits">Ver kits</a>
           <a class="botao botao-outline" href="#contato">Agendar avaliação</a>
         </div>
@@ -55,11 +59,11 @@
         <form id="orcamentoRapido">
           <h3>Orçamento rápido</h3>
           <label>Nome</label>
-          <input name="nome" placeholder="Seu nome completo" required/>
+          <input name="nome" placeholder="Seu nome completo" required />
           <label>Email</label>
-          <input name="email" type="email" placeholder="exemplo@email.com" required/>
+          <input name="email" type="email" placeholder="exemplo@email.com" required />
           <label>Modelo do carro</label>
-          <input name="modelo" placeholder="Ex: Civic 2022, Golf GTI..." required/>
+          <input name="modelo" placeholder="Ex: Civic 2022, Golf GTI..." required />
           <button class="botao botao-primario">Enviar</button>
         </form>
       </aside>
@@ -90,7 +94,8 @@
     <section id="sobre">
       <h2>Sobre nós</h2>
       <article class="cartao">
-        <p>Somos uma oficina especializada na criação de modelos de bodykits para carros, com uma equipe de design que utiliza inteligência artificial para sugerir e dar suporte ao cliente.</p>
+        <p>Somos uma oficina especializada na criação de modelos de bodykits para carros, com uma equipe de design que
+          utiliza inteligência artificial para sugerir e dar suporte ao cliente.</p>
       </article>
     </section>
 
@@ -104,5 +109,5 @@
   <!-- <script src="config.js"></script> -->
   <script src="{{url_for('static', filename='js/main.js')}}"></script>
 </body>
-</html>
 
+</html>

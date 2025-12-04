@@ -182,7 +182,6 @@ def home():
 def desenvolver():
     return render_template("desenvolver.html")
 
-
 # 🔧 EXECUÇÃO LOCAL
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
