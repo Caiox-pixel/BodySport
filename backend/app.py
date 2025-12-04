@@ -8,6 +8,7 @@ from psycopg2 import pool
 import bcrypt
 import re
 import json
+from flask import render_template
 
 # Carregar variáveis de ambiente
 load_dotenv()
@@ -175,11 +176,7 @@ def health():
 # 🟢 ROTA RAIZ (Página inicial)
 @app.route("/", methods=["GET"])
 def home():
-    return jsonify({
-        "status": "online",
-        "message": "🚀 BodySport API está rodando com sucesso!",
-        "endpoints": ["/api/orcamento", "/api/login", "/api/health"]
-    })
+    return render_template("index.html")
 
 
 # 🔧 EXECUÇÃO LOCAL
