@@ -94,42 +94,7 @@
     <small>© 2025 BodySport — Todos os direitos reservados.</small>
   </footer>
 
-  <script>
-    // Pequeno script para UX: mostrar/ocultar senha e demo de mensagem
-    (function () {
-      const showBtn = document.querySelector('.show-pass');
-      const pass = document.getElementById('senha');
-      const msg = document.getElementById('msg');
-      const form = document.getElementById('loginForm');
 
-      showBtn?.addEventListener('click', () => {
-        if (!pass) return;
-        pass.type = pass.type === 'password' ? 'text' : 'password';
-        showBtn.textContent = pass.type === 'password' ? '' : '';
-      });
-
-      form?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // validação simples (apenas demo). Aqui você chamaria sua API.
-        const email = form.email.value.trim();
-        const senha = form.senha.value.trim();
-        if (!email || !senha) {
-          msg.textContent = 'Preencha e-mail e senha.';
-          msg.classList.add('visivel');
-          setTimeout(()=> msg.classList.remove('visivel'), 3000);
-          return;
-        }
-        // simula sucesso
-        msg.textContent = 'Entrando…';
-        msg.classList.add('visivel');
-        setTimeout(()=> {
-          msg.textContent = 'Login efetuado!';
-          msg.classList.remove('info');
-          msg.classList.add('sucesso','visivel');
-        }, 700);
-      });
-    })();
-  </script>
    <script src="{{url_for('static', filename='js/login.js')}}"></script>
 </body>
 </html>
