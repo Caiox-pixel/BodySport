@@ -6,9 +6,9 @@
   <title>Entrar — BodySport</title>
   <meta name="description" content="Login — BodySport" />
   <!-- CSS base -->
-  <link rel="stylesheet" href="{{url for('static', filename='styles/main.css')}}" />
+  <link rel="stylesheet" href="{{url_for('static', filename='styles/main.css')}}" />
   <!-- Regras específicas da página de login -->
-  <link rel="stylesheet" href="{{url for('static', filename='styles/login.css')}}" />
+  <link rel="stylesheet" href="{{url_for('static', filename='styles/login.css')}}" />
 </head>
 <body>
   <main class="login-page">
@@ -25,7 +25,7 @@
         </div>
         <nav aria-label="links auxiliares">
           <ul>
-            <li><a href="{{url for('templates', filename='index.html')}}" title="Voltar para o site">Início</a></li>
+            <li><a href="{{url_for('templates', filename='index.html')}}" title="Voltar para o site">Início</a></li>
             <li><a href="#contato">Suporte</a></li>
           </ul>
         </nav>

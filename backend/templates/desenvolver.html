@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="{{url for('static', filename='styles/main.css')}}">
-  <link rel="stylesheet" href="{{url for('static', filename='styles/desenvolver.css')}}">
-  <link rel="stylesheet" href="{{url for('static', filename='styles/login.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='styles/main.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='styles/desenvolver.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='styles/login.css')}}">
   <title>Desenvolver Bodykit — BodySport</title>
   <meta name="description" content="Crie e personalize seu bodykit com nosso editor interativo" />
 </head>
@@ -353,10 +353,10 @@
     </div>
   </div>
 
-  <script src="{{url for('static', filename='js/main.js')}}"></script>
-  <script src="{{url for('static', filename='js/carros.js')}}"></script>
-  <script src="{{url for('static', filename='js/icons.js')}}"></script>
-  <script src="{{url for('static', filename='js/desenvolver.js')}}"></script>
+  <script src="{{url_for('static', filename='js/main.js')}}"></script>
+  <script src="{{url_for('static', filename='js/carros.js')}}"></script>
+  <script src="{{url_for('static', filename='js/icons.js')}}"></script>
+  <script src="{{url_for('static', filename='js/desenvolver.js')}}"></script>
   
   <!-- Three.js via CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js"></script>
