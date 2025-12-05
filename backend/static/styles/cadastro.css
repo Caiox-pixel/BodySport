@@ -99,8 +99,8 @@
 }
 
 .campo-senha input {
-  flex: 2;
-
+  flex: 1;
+''
 }
 
 .campo-senha button {
@@ -194,4 +194,7 @@
 .campo-senha button:hover {
   background: var(--accent);
   color: #fff;
+}
+#senha {
+  width: 20px;
 }
