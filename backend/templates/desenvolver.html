@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="{{url_for('static', filename='styles/main.css')}}">
-  <link rel="stylesheet" href="{{url_for('static', filename='styles/desenvolver.css')}}">
-  <link rel="stylesheet" href="{{url_for('static', filename='styles/login.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/desenvolver.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
   <title>Desenvolver Bodykit — BodySport</title>
   <meta name="description" content="Crie e personalize seu bodykit com nosso editor interativo" />
 </head>
@@ -353,53 +353,15 @@
     </div>
   </div>
 
-  <script src="{{url_for('static', filename='js/main.js')}}"></script>
-  <script src="{{url_for('static', filename='js/carros.js')}}"></script>
-  <script src="{{url_for('static', filename='js/icons.js')}}"></script>
-  <script src="{{url_for('static', filename='js/desenvolver.js')}}"></script>
-  
-  <!-- Three.js via CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js"></script>
-  
-  <script type="module">
-    // Inicializar após carregar tudo
-    document.addEventListener('DOMContentLoaded', async () => {
-      // Carregar carros e popular select
-      const carros = await carregarCarros();
-      const selectCarro = document.getElementById('modeloCarro');
-      if (selectCarro && carros) {
-        popularSelectCarros(selectCarro, carros);
-      }
-      
-      // Substituir emojis por ícones
-      substituirEmojis();
-      
-      // Aguardar Three.js carregar
-      await new Promise(resolve => {
-        if (typeof THREE !== 'undefined') {
-          resolve();
-        } else {
-          const checkInterval = setInterval(() => {
-            if (typeof THREE !== 'undefined') {
-              clearInterval(checkInterval);
-              resolve();
-            }
-          }, 100);
-        }
-      });
-      
-      // Inicializar visualização 3D
-      const { initViewer3D } = await import('../src/js/viewer3d.js');
-      initViewer3D('previewContainer');
-      
-      // Atualizar preview inicial
-      setTimeout(() => {
-        if (typeof atualizarPreview === 'function') {
-          atualizarPreview();
-        }
-      }, 500);
-    });
-  </script>
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/carros.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/icons.js') }}"></script>
+
+  <!-- Three.js ESM -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"></script>
+
+  <!-- Script principal da página -->
+  <script type="module" src="{{ url_for('static', filename='js/desenvolver.js') }}"></script>
 </body>
 </html>
-
