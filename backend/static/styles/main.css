@@ -485,7 +485,13 @@ footer p:hover {
 /* ===== Kits populares com imagem de fundo ===== */
 .kit {
   position: relative;
-  height: 200px;
+  height: 220px;
+  width: 100%;
+
+  display: block;        /* 👈 importante */
+  text-decoration: none; /* remove sublinhado */
+  cursor: pointer;
+
   border-radius: 16px;
   overflow: hidden;
 
@@ -494,9 +500,7 @@ footer p:hover {
   background-repeat: no-repeat;
 
   border: 1px solid var(--border);
-  cursor: pointer;
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-  display: block;
 }
 
 .kit:hover {
@@ -510,8 +514,11 @@ footer p:hover {
 }
 
 .kit-overlay {
+  pointer-events: none; /* 👈 ISSO É O PULO DO GATO */
+
   position: absolute;
   inset: 0;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -523,6 +530,7 @@ footer p:hover {
     rgba(0,0,0,0.10)
   );
 }
+ss
 
 .kit-overlay h3 {
   margin: 0;
