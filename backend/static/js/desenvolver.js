@@ -5,14 +5,11 @@
 
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
 import { initViewer3D, updateBodykitPart } from "./viewer3d.js";
-// ===============================
-// PARÂMETROS DA URL (ex: ?car=supra)
-// ===============================
-const params = new URLSearchParams(window.location.search);
-const carroDaURL = (params.get("car") || "").trim().toLowerCase();
 
 // Expõe THREE globalmente para o módulo do visualizador 3D
 window.THREE = THREE;
+const params = new URLSearchParams(window.location.search);
+const carroDaURL = (params.get("car") || "").toLowerCase();
 
 // ===============================
 // ESTADO GLOBAL DO PROJETO
@@ -54,7 +51,23 @@ const precosPecas = {
 // ===============================
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    await carregarCarros(); // Função vinda do carros.js
+    await carregarCarros();
+    if (carroDaURL) {
+  const select = document.getElementById("modeloCarro");
+  if (select) {
+    const option = [...select.options].find(
+      o => o.value.toLowerCase() === carroDaURL
+    );
+
+    if (option) {
+      select.value = option.value;
+      projeto.modeloCarro = option.value;
+      atualizarInfoModelo();
+      await atualizarPreview();
+    }
+  }
+}
+ // Função vinda do carros.js
 // Se vier ?car=supra, tenta selecionar automaticamente no select
 if (carroDaURL) {
   const select = document.getElementById("modeloCarro");

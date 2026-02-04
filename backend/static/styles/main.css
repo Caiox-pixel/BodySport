@@ -545,4 +545,74 @@ ss
   font-size: 13px;
   font-weight: 500;
 }
-} 
+} /* ==============================
+   KITS POPULARES — CARD CLICÁVEL
+   ============================== */
+
+.kit {
+  position: relative;
+  height: 220px;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border: 1px solid var(--border);
+  cursor: pointer;
+
+  transition: transform .18s ease,
+              box-shadow .18s ease,
+              border-color .18s ease;
+}
+
+.kit:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0,0,0,.5);
+  border-color: rgba(0,212,212,.3);
+}
+
+/* LINK INVISÍVEL COBRE 100% DO CARD */
+.kit-link {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+}
+
+/* TEXTO + GRADIENT */
+.kit-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,.8),
+    rgba(0,0,0,.1)
+  );
+}
+
+.kit-overlay h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.kit-overlay p {
+  margin-top: 6px;
+  color: rgba(255,255,255,.85);
+  font-size: 13px;
+}
+
+/* IMAGEM DO SUPRA */
+.kit-supra {
+  background-image: url("/static/assets/images/preview-1.webp");
+}
