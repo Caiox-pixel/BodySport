@@ -5,6 +5,11 @@
 
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
 import { initViewer3D, updateBodykitPart } from "./viewer3d.js";
+// ===============================
+// PARÂMETROS DA URL (ex: ?car=supra)
+// ===============================
+const params = new URLSearchParams(window.location.search);
+const carroDaURL = (params.get("car") || "").trim().toLowerCase();
 
 // Expõe THREE globalmente para o módulo do visualizador 3D
 window.THREE = THREE;
@@ -50,11 +55,32 @@ const precosPecas = {
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     await carregarCarros(); // Função vinda do carros.js
+// Se vier ?car=supra, tenta selecionar automaticamente no select
+if (carroDaURL) {
+  const select = document.getElementById("modeloCarro");
+  if (select) {
+    const temValue = Array.from(select.options).some(
+      opt => (opt.value || "").toLowerCase() === carroDaURL
+    );
+
+    if (temValue) {
+      select.value = carroDaURL;
+    } else {
+      const opt = Array.from(select.options).find(o =>
+        (o.textContent || "").toLowerCase().includes(carroDaURL)
+      );
+      if (opt) select.value = opt.value;
+    }
+
+    projeto.modeloCarro = select.value;
+    atualizarInfoModelo();
+  }
+}
 
     inicializarEventos();
     initViewer3D("previewContainer");
 
-    setTimeout(() => atualizarPreview(), 1000);
+   await atualizarPreview();
     atualizarResumo();
     carregarHistorico();
   } catch (error) {
