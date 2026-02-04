@@ -616,3 +616,7 @@ ss
 .kit-supra {
   background-image: url("/static/assets/images/preview-1.webp");
 }
+/* Imagens dos kits */
+.kit-gr86 { background-image: url("/static/assets/images/gr86.webp"); }
+.kit-rx7  { background-image: url("/static/assets/images/rx7.webp"); }
+.kit-mc20 { background-image: url("/static/assets/images/mc20.webp"); }
