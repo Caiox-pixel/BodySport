@@ -100,7 +100,6 @@
 
 .campo-senha input {
   flex: 1;
-''
 }
 
 .campo-senha button {
@@ -179,6 +178,7 @@
 
 .campo-senha input {
   flex: 1;
+  margin-bottom: 0; /* importante: evita "dobrar" espaçamento */
 }
 
 .campo-senha button {
@@ -189,13 +189,10 @@
   color: var(--muted-light);
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .campo-senha button:hover {
   background: var(--accent);
   color: #fff;
-}
-#senha{
-
-  background-color: white;
 }
