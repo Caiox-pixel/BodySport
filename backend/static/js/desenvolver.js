@@ -5,11 +5,33 @@
 
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
 import { initViewer3D, updateBodykitPart } from "./viewer3d.js";
+import { initViewer3D, updateBodykitPart, loadCarModel, loadKitPart } from "./viewer3d.js";
 
 // Expõe THREE globalmente para o módulo do visualizador 3D
 window.THREE = THREE;
 const params = new URLSearchParams(window.location.search);
 const carroDaURL = (params.get("car") || "").toLowerCase();
+
+const CARS = {
+  supra: "/static/assets/models/cars/supra.glb",
+  gr86: "/static/assets/models/cars/gr86.glb",
+};
+
+const KITS = {
+  supra: [
+    {
+      id: "widebody-1",
+      nome: "Widebody 1",
+      pecas: {
+        "para-choque-dianteiro": "/static/assets/models/kits/supra/widebody-1/front.glb",
+        "para-choque-traseiro": "/static/assets/models/kits/supra/widebody-1/rear.glb",
+        "saias-laterais": "/static/assets/models/kits/supra/widebody-1/skirts.glb",
+        "spoiler": "/static/assets/models/kits/supra/widebody-1/spoiler.glb"
+      }
+    }
+  ]
+};
+
 
 // ===============================
 // ESTADO GLOBAL DO PROJETO
